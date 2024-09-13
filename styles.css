@@ -1,0 +1,118 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and overall layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #2d4b7a;
+    color: white;
+}
+
+.logo h1, .logo h3 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-icon {
+    font-size: 24px;
+}
+
+main {
+    padding: 20px;
+}
+
+h2 {
+    color: #2d4b7a;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+#notifications, #about, #staff, #achievements {
+    margin-bottom: 40px;
+}
+
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+.notification-box {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.notification-box th, .notification-box td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.notification-box th {
+    background-color: #2d4b7a;
+    color: white;
+}
+
+.download-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.staff-list, .achievements-list {
+    list-style: none;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #2d4b7a;
+    color: white;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        display: none;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
