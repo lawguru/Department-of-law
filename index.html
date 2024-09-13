@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .notification-box {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .notification-box th, .notification-box td {
+            padding: 15px;
+            text-align: left;
+        }
+        .notification-box th {
+            background-color: #333;
+            color: white;
+        }
+        .notification-box tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .notification-box td:nth-child(2) {
+            text-align: center;
+        }
+        .download-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Latest Notifications</h2>
+    <table class="notification-box">
+        <tr>
+            <th>Notification</th>
+            <th>Download</th>
+        </tr>
+        <tr>
+            <td>Notification 1: Important Update</td>
+            <td><a href="link-to-download1.pdf" target="_blank"><img class="download-icon" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Download"></a></td>
+        </tr>
+        <tr>
+            <td>Notification 2: Event Details</td>
+            <td><a href="link-to-download2.pdf" target="_blank"><img class="download-icon" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Download"></a></td>
+        </tr>
+        <tr>
+            <td>Notification 3: New Policy Update</td>
+            <td><a href="link-to-download3.pdf" target="_blank"><img class="download-icon" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Download"></a></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
