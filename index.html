@@ -1,95 +1,93 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Law - Assam University Silchar</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Navigation Bar -->
-    <header>
-        <div class="logo">
-            <h1>Department of Law</h1>
-            <h3>Assam University Silchar</h3>
+{% extends "base.html" %}
+
+{% block title %}TPC | CSE | AUS{% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container-xxl col-xxl-10 p-3 p-sm-4 p-md-5">
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-4 border shadow-lg g-0">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            <h4 class="fw-bold text-body-emphasis lh-1 mb-0">Assam University, Department of</h4>
+            <h4 class="fw-bold text-body-emphasis lh-1 mb-0">Computer Science and Engineering</h4>
+            <h1 class="fw-bold text-body-emphasis lh-1 my-3">Training & Placement Cell</h1>
+            <p>
+                Training & Placement Cell (TPC) handles all aspects of campus placements for the graduating students of
+                the Department. TPC of Assam University's Department of Computer Science and Engineering (CSE) is well
+                equipped with excellent infrastructure to support each and every stage of the placement processes. TPC
+                staff members and student team assist in arranging Pre-Placement Talks, Written Tests, Group
+                Discussions, and Interviews etc. as per the requirements of the Organizations and Recruiters.
+            </p>
         </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#notifications">Latest Notifications</a></li>
-                <li><a href="#about">About Department</a></li>
-                <li><a href="#staff">Teaching Staff</a></li>
-                <li><a href="#achievements">Achievements</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <i class="menu-icon">☰</i>
+        <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+            <img src="{% static 'assets/homeimage.png' %}" class="rounded-lg-3" width="720" alt="">
+        </div>
+    </div>
+    {% if quote %}
+    <div class="container-sm my-5 py-5 d-flex justify-content-center">
+        <figure>
+            <blockquote class="blockquote">
+                <p class="display-6 fw-bold text-body-emphasis mb-4 text-center fst-italic">"{{ quote.quote }}"</p>
+            </blockquote>
+            <figcaption class="blockquote-footer text-end">
+                {{ quote.author }}{% if quote.fictional %}, <cite title="Source Title">fictional character</cite>
+                {% endif %}
+                {% if quote.source %}
+                in <cite title="Source Title">{{ quote.source }}</cite>
+                {% endif %}
+            </figcaption>
+        </figure>
+    </div>
+    {% endif %}
+    <div id="team-members">
+        {% if team %}
+        <div class="my-5">
+            <h1 class="fw-bold text-body-emphasis lh-1 text-center mb-5">Our Team</h1>
+            <div class="d-flex flex-wrap align-items-stretch justify-content-evenly gap-4">
+                {% for member in team %}
+                <div class="card rounded-4 border shadow-lg" style="min-width: 320px;">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="bi bi-person-circle fs-1"></i>
+                            <div class="w-100">
+                                <h5 class="card-title placeholder-glow mb-0 lh-1">{{ member.get_full_name }}</span>
+                                </h5>
+                                <h6 class="card-subtitle badge p-0 m-0 mb-2 text-body-secondary">{{ member.subtext }}</h6>
+                            </div>
+                        </div>
+                        {% if member.primary_phone_number %}
+                        <a href="tel:{{member.primary_phone_number}}" target="_blank">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-telephone"></i><span>{{ member.primary_phone_number }}</span>
+                                <h6 class="card-subtitle text-body-secondary">
+                                </h6>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% if member.primary_email %}
+                        <a href="mailto:{{member.primary_email}}" target="_blank">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="bi bi-envelope"></i>
+                                <h6 class="card-subtitle text-body-secondary"><span>{{ member.primary_email }}</span>
+                                </h6>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% for link in member.links.all %}
+                        {% if link.title == 'Portfolio' or link.title == 'Website' or link.title == 'GitHub' or link.title == 'LinkedIn' %}
+                        <a href="{{ link.url }}" target="_blank">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="{{link.icon}}"></i>
+                                <h6 class="card-subtitle text-body-secondary"><span>{{ link.title }}</span></h6>
+                            </div>
+                        </a>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-        </nav>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Latest Notifications Section -->
-        <section id="notifications">
-            <h2>Latest Notifications</h2>
-            <div class="container">
-                <table class="notification-box">
-                    <tr>
-                        <th>Notification</th>
-                        <th>Download</th>
-                    </tr>
-                    <tr>
-                        <td>Notification 1: Important Update</td>
-                        <td><a href="link-to-download1.pdf" target="_blank"><img class="download-icon" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Download"></a></td>
-                    </tr>
-                    <tr>
-                        <td>Notification 2: Event Details</td>
-                        <td><a href="link-to-download2.pdf" target="_blank"><img class="download-icon" src="https://cdn-icons-png.flaticon.com/512/84/84380.png" alt="Download"></a></td>
-                    </tr>
-                </table>
-            </div>
-        </section>
-
-        <!-- About Department Section -->
-        <section id="about">
-            <h2>About Department</h2>
-            <p>The Department of Law at Assam University, Silchar, offers quality legal education and research opportunities. Established in [Year], the department has contributed immensely to the legal landscape of the region through its comprehensive curriculum and distinguished faculty.</p>
-        </section>
-
-        <!-- Teaching Staff Section -->
-        <section id="staff">
-            <h2>Teaching Staff</h2>
-            <ul class="staff-list">
-                <li>Dr. John Doe - Professor & Head</li>
-                <li>Dr. Jane Smith - Associate Professor</li>
-                <li>Mr. Robert Brown - Assistant Professor</li>
-                <li>Ms. Emily White - Assistant Professor</li>
-            </ul>
-        </section>
-
-        <!-- Achievements Section -->
-        <section id="achievements">
-            <h2>Achievements</h2>
-            <ul class="achievements-list">
-                <li>Ranked among the top 10 law schools in North-East India.</li>
-                <li>Several research papers published in leading journals.</li>
-                <li>Students have consistently secured top positions in national and international moot court competitions.</li>
-            </ul>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Department of Law, Assam University Silchar</p>
-    </footer>
-
-    <!-- JavaScript for Menu Toggle -->
-    <script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
